@@ -26,26 +26,58 @@ print(data)        # {'foo': 'bar'}
 
 app = FastAPI(default_response_class=ORJSONResponse)
 
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Union[bool,None] = None
+# class Item(BaseModel):
+#     name: str
+#     price: float
+#     is_offer: Union[bool,None] = None
 
-@app.get("/")
-def read_root():
-    return {'data':'Hello World'}
+# @app.get("/")
+# def read_root():
+#     return {'data':'Hello World'}
 
 
-@app.get("/fast-items/{item_id}", response_class=ORJSONResponse) # to use orjson response for specific route
-def read_item(item_id: int):
-    return {"item_id": item_id, "message": "This uses orjson!"}
+# @app.get("/fast-items/{item_id}", response_class=ORJSONResponse) # to use orjson response for specific route
+# def read_item(item_id: int):
+#     return {"item_id": item_id, "message": "This uses orjson!"}
 
-@app.get(f"/items/{{item_id}}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+# @app.get(f"/items/{{item_id}}")
+# def read_item(item_id: int, q: Union[str, None] = None):
+#     if q:
+#         return {"item_id": item_id, "q": q}
+#     return {"item_id": item_id}
 
-@app.put(f"/items/{{item_id}}")
-def update_item(item_id: int, item: Item):
-    return {"item_id": item_id, "item": item}
+# @app.get('/items/')
+# async def read_items(skip: int = 0, limit: int = 10):
+#     return {'skip': skip, 'limit': limit}
+
+# @app.put(f"/items/{{item_id}}")
+# def update_item(item_id: int, item: Item):
+#     return {"item_id": item_id, "item": item}
+
+
+# @app.get(f"/path/{{filepath:path}}")
+# async def read_path(filepath: str):
+#     return {'filepath':filepath}
+
+# @app.get(f"/users/{{user_id}}/items/{{item_id}}")
+# async def read_user(user_id: int, item_id: int, q: str | None = None, short: bool = False):
+#     item = {'user_id': user_id,'item_id': item_id}
+#     if q:
+#         item.update({'q':q})
+#     if not short:
+#         item.update({'description': 'Long description'})
+#     if short:
+#         item.update({'description': 'Short description'})
+
+#     return item
+
+# @app.post('/items/')
+# async def create_item(item: Item):
+#     return {'item': item.model_dump()}
+
+@app.get("/home")
+async def home():
+    return {"message": "Hello World"}
+
 
 
