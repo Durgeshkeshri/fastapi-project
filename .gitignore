@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Environment
+.env
+venv/
+.env/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+#others 
+
+commands.md
+fastapi-course
+Learning_FastAPI/__pycache__
